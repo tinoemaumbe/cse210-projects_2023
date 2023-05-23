@@ -11,7 +11,7 @@
             {
                 "Who was the most interesting person you met today?",
                 "What was the best part of your day?",
-                "How did you see the hand of the Lord in you life?",
+                "How did you see the hand of the Lord in your life?",
                 "What was the strongest emotion you felt today?",
                 "If you had one thing you could do today, what would it be?"
             };
