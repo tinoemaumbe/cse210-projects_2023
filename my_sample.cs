@@ -139,7 +139,7 @@ namespace DailyJournal
                 {
                     string line;
                     while ((line = sr.ReadLine()) != null)
-                    {
+                     {
                         loadedEntries.Add(Entry.FromFileString(line));
                     }
                 }
@@ -151,7 +151,7 @@ namespace DailyJournal
                 Console.WriteLine("Error loading journal: " + ex.Message);
             }
         }
-    }
+   }
 
     //Entry class
     //This class is the entry class that holds the date, prompt, and response data for each journal entry instance   
