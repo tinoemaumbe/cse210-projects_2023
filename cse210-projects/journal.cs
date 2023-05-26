@@ -1,54 +1,49 @@
-
-using System;
-using System.Collections.Generic;
-using System.IO;
-
-namespace Journal
+public class Journal
 {
-    class Program
+    public List<Entry> _entries;
+
+    public Journal()
     {
-        static void Main(string[] args)
+        _entries = new List<Entry>();
+    }
+
+    public void AddEntry(Entry entry)
+    {
+        _entries.Add(entry);
+    }
+
+    public void DisplayEntries()
+    {
+        foreach (var entry in _entries)
         {
-            Journal journal = new Journal();
-            bool running = true;
+            Console.WriteLine($"{entry._date}: {entry._prompt} - {entry._response}");
+        }
+    }
 
-            while (running)
+    public void SaveToFile(string fileName)
+    {
+        using (var writer = new StreamWriter(fileName))
+        {
+            foreach (var entry in _entries)
             {
-                Console.WriteLine("1. Write a new entry");
-                Console.WriteLine("2. Display the journal");
-                Console.WriteLine("3. Save the journal to a file");
-                Console.WriteLine("4. Load the journal from a file");
-                Console.WriteLine("5. Quit");
+                writer.WriteLine($"{entry._date},{entry._prompt},{entry._response}");
+            }
+        }
+    }
 
-                string input = Console.ReadLine();
-
-                switch (input)
-                {
-                    case "1":
-                        Console.WriteLine(journal.GetRandomPrompt());
-                        string prompt = Console.ReadLine();
-                        journal.AddEntry(prompt);
-                        break;
-                    case "2":
-                        journal.DisplayEntries();
-                        break;
-                    case "3":
-                        Console.WriteLine("Enter filename:");
-                        string filename = Console.ReadLine();
-                        journal.SaveToFile(filename);
-                        break;
-                    case "4":
-                        Console.WriteLine("Enter filename:");
-                        filename = Console.ReadLine();
-                        journal.LoadFromFile(filename);
-                        break;
-                    case "5":
-                        running = false;
-                        break;
-                    default:
-                        Console.WriteLine("Invalid input");
-                        break;
-                }
+    public void LoadFromFile(string fileName)
+    {
+        using (var reader = new StreamReader(fileName))
+        {
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(',');
+                var date = DateTime.Parse(values[0]);
+                var prompt = values[1];
+                var response = values[2];
+                var entry = new Entry(prompt, response) { _date = date };
+                _entries.Add(entry);
             }
         }
     }
