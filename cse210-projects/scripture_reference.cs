@@ -1,53 +1,8 @@
-using System;
-using System.Collections.Generic;
 
-class Program
-{
-    static void Main(string[] args)
-    {
-        // Create a new scripture with reference and text
-        Scripture scripture = new Scripture("John 3:16", "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.");
-
-        // Create a new game with the scripture
-        ScriptureMemoryGame game = new ScriptureMemoryGame(scripture);
-
-        // Play the game
-        game.Play();
-    }
-}
-
-class Scripture
-{
-    public string Reference { get; private set; }
-    public string Text { get; private set; }
-
-    public Scripture(string reference, string text)
-    {
-        Reference = reference;
-        Text = text;
-    }
-
-    public List<string> GetWords()
-    {
-        // Split the text into individual words
-        return new List<string>(Text.Split(' '));
-    }
-}
-
-class ScriptureWord
-{
-    public string Word { get; private set; }
-    public bool IsHidden { get; set; }
-
-    public ScriptureWord(string word)
-    {
-        Word = word;
-        IsHidden = false;
-    }
-}
 
 class ScriptureMemory
-{
+
+    {
     private readonly List<ScriptureWord> _words;
     private readonly Random _random;
 
@@ -62,6 +17,7 @@ class ScriptureMemory
         }
 
         // Initialize the random number generator
+
         _random = new Random();
     }
 
@@ -121,6 +77,6 @@ class ScriptureMemory
             }
             
             Console.WriteLine("Your score is "+score+".");
+            }
         }
     }
-}
