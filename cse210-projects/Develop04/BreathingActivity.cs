@@ -1,30 +1,36 @@
-   static void BreathingActivity()
-        {
-            Console.Clear();
-            Console.WriteLine("Breathing Activity");
-            Console.WriteLine(" Welcome to breathing activity. This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.");
+using Tinoe;
+class BreathingActivity : BaseActivity
+{
+    // Attributes
+    private int _breathIn;
+    private int _breathOut;
+    private string _message = "This activity will help you relax by walking your through breathing in and out slowly. Clear your mind and focus on your breathing.";
 
-            Console.Write("Enter the duration of the activity in seconds: ");
-            int duration = int.Parse(Console.ReadLine());
+    // Constructor
+    public BreathingActivity(string activityName, int activityDuration, int breathIn, int breathOut) : base(activityName, activityDuration)
+    {
+        _breathIn = breathIn;
+        _breathOut = breathOut;
+    }
 
-            Console.WriteLine("Prepare to begin...");
-            Thread.Sleep(3000);
+    // Method to breathe in
+    public void BreathIn()
+    {
+        Console.WriteLine("Breathe in for " + _breathIn + " seconds...");
+        Thread.Sleep(_breathIn * 1000);
+    }
 
-            for (int i = 0; i < duration; i++)
-            {
-                if (i % 2 == 0)
-                {
-                    Console.WriteLine("Breathe in...");
-                }
-                else
-                {
-                    Console.WriteLine("Breathe out...");
-                }
+    // Method to breathe out
+    public void BreathOut()
+    {
+        Console.WriteLine("Breathe out for " + _breathOut + " seconds...");
+        Thread.Sleep(_breathOut * 1000);
+    }
 
-                Thread.Sleep(1000);
-            }
+    // Method to print out the message for the activity
+    public void PrintMessage()
+    {
+        Console.WriteLine(_message);
+    }
+}
 
-            Console.WriteLine("Good job! You have completed the Breathing Activity for {0} seconds.", duration);
-            Thread.Sleep(3000);
-        }
-        
