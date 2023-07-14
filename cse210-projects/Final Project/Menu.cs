@@ -1,4 +1,4 @@
-
+using System;
         
     class Menu
     {
@@ -41,7 +41,8 @@
                 Console.WriteLine("2. Withdraw money");
                 Console.WriteLine("3. Deposit money");
                 Console.WriteLine("4. Change PIN");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Transfer Money");
+                Console.WriteLine("6. Exit");
 
                 // Get the user's choice
                 int choice = int.Parse(Console.ReadLine());
@@ -62,6 +63,9 @@
                         ChangePIN();
                         break;
                     case 5:
+                        TransferMoney();
+                        break;
+                    case 6:
                         exit = true;
                         Console.WriteLine("Thank you for using the ATM. Goodbye!");
                         break;

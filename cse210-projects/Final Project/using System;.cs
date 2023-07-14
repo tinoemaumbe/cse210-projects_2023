@@ -1,6 +1,7 @@
 using System;
-using System.IO;
-using System.Globalization;
+
+namespace atm_program
+{
     class ATM
     {
         // Initialize some variables
@@ -11,10 +12,10 @@ using System.Globalization;
         public void Run()
         {
             // Greet the user
-            Console.WriteLine("Welcome to the Y.G.T Banking ATM!");
+            Console.WriteLine("Welcome to the ATM!");
 
             // Ask the user to enter the PIN
-            Console.WriteLine("Please kindly enter your PIN:");
+            Console.WriteLine("Please enter your PIN:");
             int inputPin = int.Parse(Console.ReadLine());
 
             // Check if the PIN is correct
@@ -31,11 +32,8 @@ using System.Globalization;
             }
         }
 
-    
-    public void ShowMenu()
-    {
-            
-
+        public void ShowMenu()
+        {
             // Loop until the user chooses to exit
             while (!exit)
             {
@@ -45,11 +43,10 @@ using System.Globalization;
                 Console.WriteLine("2. Withdraw money");
                 Console.WriteLine("3. Deposit money");
                 Console.WriteLine("4. Change PIN");
-                Console.WriteLine("5. Transfer money");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("5. Exit");
 
                 // Get the user's choice
-         
+                int choice = int.Parse(Console.ReadLine());
 
                 // Perform the corresponding action
                 switch (choice)
@@ -67,9 +64,6 @@ using System.Globalization;
                         ChangePIN();
                         break;
                     case 5:
-                        TransferMoney();
-                        break;
-                    case 6:
                         exit = true;
                         Console.WriteLine("Thank you for using the ATM. Goodbye!");
                         break;
@@ -152,7 +146,138 @@ using System.Globalization;
                 {
                     // Show an error message
                     Console.WriteLine("The new PINs do not match or are the same as the old PIN. Please try again.");
-                }            
+                }
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+               
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
             }
@@ -162,34 +287,7 @@ using System.Globalization;
                 Console.WriteLine("Wrong old PIN. Please try again.");
             }
         }
-    
-
-    public void TransferMoney()
-    {
-    // Ask the user how much money to transfer
-    Console.WriteLine("Please enter the amount of money you want to transfer?");
-    int amount = int.Parse(Console.ReadLine());
-
-    // Check if the amount is valid and there is enough balance
-    if (amount > 0 && amount <= balance)
-    {
-        // Ask the user for the recipient's account number
-        Console.WriteLine("Please enter the receiver's account number:");
-        int account = int.Parse(Console.ReadLine());
-
-        // Deduct the amount from the balance and show a message
-        balance -= amount;
-        Console.WriteLine($"You have transferred {amount} to account {account}. Your new balance is {balance}.");
     }
-    else
-    {
-        // Show an error message
-        Console.WriteLine("Invalid amount or insufficient balance. Please try again.");
-    
-    }
-  }    
-        
-
 
     class Program
     {
