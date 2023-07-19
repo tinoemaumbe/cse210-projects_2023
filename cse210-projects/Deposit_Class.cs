@@ -84,3 +84,44 @@ class Deposit : ATM
             }
         }
     }
+
+
+
+
+
+
+
+
+    // Use a constructor to initialize the balance and PIN
+public ATM(int balance, int pin)
+{
+    Balance = balance;
+    PIN = pin;
+}
+
+public void Run()
+{
+    // Greet the user
+    Console.WriteLine("Welcome to the Y.G.T Banking ATM!");
+
+    // Ask the user to enter the PIN
+    Console.WriteLine("Please kindly enter your PIN:");
+    int inputPin = int.Parse(Console.ReadLine());
+
+    // Check if the PIN is correct
+    if (inputPin == PIN)
+    {
+        // Show the main menu
+        ShowMenu();
+    }
+    else
+    {
+        // Show an error message and exit
+        Console.WriteLine("Wrong PIN. Goodbye!");
+        return;
+    }
+}
+
+public void ShowMenu()
+{
+    // Use a local variable to store the user's choice
