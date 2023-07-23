@@ -1,3 +1,7 @@
+
+using System;
+using System.Linq;
+
 public class ATMConsole
 {
     private readonly ATM atm;
@@ -201,7 +205,7 @@ public class ATMConsole
         var account = GetAccount(customer);
         if (account == null)
         {
-            Console.WriteLine("Account notfound.");
+            Console.WriteLine("Account not found.");
             return;
         }
 
