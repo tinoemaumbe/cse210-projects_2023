@@ -2,9 +2,9 @@ public class Transaction
 {
     public enum TransactionType { Deposit, Withdrawal, Transfer }
 
-    public TransactionType Type;
-    public decimal Amount;
-    public int AccountNumber;
+    public TransactionType Type { get; set; }
+    public decimal Amount { get; set; }
+    public int AccountNumber { get; set; }
 
     public Transaction(TransactionType type, decimal amount, int accountNumber)
     {
@@ -18,30 +18,25 @@ public class Transaction
         switch (Type)
         {
             case TransactionType.Deposit:
-                account.Balance += Amount;
+                account.Deposit(Amount);
                 break;
             case TransactionType.Withdrawal:
-                if (account.Balance >= Amount)
-                {
-                    account.Balance -= Amount;
-                }
-                else
-                {
-                    throw new InvalidOperationException("Insufficient funds.");
-                }
+                account.Withdraw(Amount);
                 break;
             case TransactionType.Transfer:
                 var otherAccount = account.Customer.Accounts.FirstOrDefault(a => a.AccountNumber == AccountNumber);
                 if (otherAccount != null)
                 {
-                    account.Balance -= Amount;
-                    otherAccount.Balance += Amount;
+                    account.Withdraw(Amount);
+                    otherAccount.Deposit(Amount);
                 }
                 else
                 {
                     throw new InvalidOperationException("Invalid account number.");
                 }
                 break;
+            default:
+                throw new InvalidOperationException($"Invalid transaction type: {Type}");
         }
     }
-}2
+}

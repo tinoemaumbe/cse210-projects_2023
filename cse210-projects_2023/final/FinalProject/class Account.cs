@@ -1,14 +1,16 @@
 public class Account
 {
-    public int AccountNumber;
-    public decimal Balance;
-    public string AccountHolderName;
+    public int AccountNumber { get; set; }
+    public decimal Balance { get; set; }
+    public string AccountHolderName { get; set; }
+    public Customer Customer { get; set; }
 
-    public Account(int accountNumber, decimal balance, string accountHolderName)
+    public Account(int accountNumber, decimal balance, string accountHolderName, Customer customer)
     {
         AccountNumber = accountNumber;
         Balance = balance;
         AccountHolderName = accountHolderName;
+        Customer = customer;
     }
 
     public void Deposit(decimal amount)

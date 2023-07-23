@@ -1,13 +1,22 @@
+using System.Collections.Generic;
+using System.Linq;
+
 public class ATM
 {
-    public string Location;
-    public decimal MaxWithdrawalLimit;
-    public List<Customer> Customers;
+    public string Location { get; set; }
+    public decimal WithdrawLimit { get; set; }
+    public List<Customer> Customers { get; set; }
 
-    public ATM(string location, decimal maxWithdrawalLimit)
+    public ATM()
+    {
+        // Default constructor
+        Customers = new List<Customer>();
+    }
+
+    public ATM(string location, decimal withdrawLimit)
     {
         Location = location;
-        MaxWithdrawalLimit = maxWithdrawalLimit;
+        WithdrawLimit = withdrawLimit;
         Customers = new List<Customer>();
     }
 
